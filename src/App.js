@@ -12,12 +12,17 @@ function App() {
     queryFn: () => wait(1000).then(() => [...POSTS])
   });
 
+  const newPostMutation = useMutation({
+    mutationFn: title => wait(1000).then(() => POSTS.push({ id: crypto.randomUUID(), title }))
+  })
+
   if (postsQuery.isLoading) return <h1>Loading...</h1>
   if (postsQuery.isError) return <pre>Error: {JSON.stringify(postsQuery.error)}</pre>
 
   return (
     <div className="App">
       <h1>TanStack Query</h1>
+      <button onClick={() => newPostMutation.mutate('New post')}>Add new post</button>
       <ul>
         {
           postsQuery.data.map((post) => {
