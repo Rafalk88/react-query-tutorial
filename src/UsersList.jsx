@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { getUsers } from './api/users'
 
-export function PostsList1() {
+export function UsersList({ listNumber }) {
   const usersQuery = useQuery({
     queryKey: ['users'],
-    queryFn: () => getUsers(1),
+    queryFn: () => getUsers(listNumber),
   })
 
   if (usersQuery.status === 'loading') return <h1>Loading...</h1>
@@ -12,7 +12,7 @@ export function PostsList1() {
 
   return (
     <section>
-      <h1>Posts List 1</h1>
+      <h1>Posts List {listNumber}</h1>
       <ol style={{
         margin: '0 auto',
         padding: '25px',
