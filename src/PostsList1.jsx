@@ -21,14 +21,17 @@ export function PostsList1() {
         {
           usersQuery.data && usersQuery.data.data.map((user) => {
             return (
-              <li key={user.id} style={{
-                padding: '20px 0',
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'between',
-                alignItems: 'center',
-                boxSizing: 'border-box'
-              }}>
+              <li
+                key={user.id}
+                style={{
+                  padding: '20px 0',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'between',
+                  alignItems: 'center',
+                  boxSizing: 'border-box'
+                }}
+              >
                 <img
                   src={user.avatar}
                   alt="avatar"
