@@ -15,6 +15,7 @@ function App() {
       >
         Posts List 1
       </button>
+      <br />
       {
         currentPage
       }
