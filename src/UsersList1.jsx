@@ -2,13 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import { getUsers } from './api/users'
 
 export function UsersList1() {
-  const usersQuery = useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: ['users'],
     queryFn: () => getUsers(1),
   })
 
-  if (usersQuery.status === 'pending') return <h1>Loading...</h1>
-  if (usersQuery.status === 'error') return <h1>{JSON.stringify(usersQuery.error)}</h1>
+  if (isLoading) return <h1>Loading...</h1>
+  if (error) return <h1>{JSON.stringify(error.message)}</h1>
 
   return (
     <section>
@@ -22,7 +22,7 @@ export function UsersList1() {
           
         }
         {
-          usersQuery.data && usersQuery.data.data.map((user) => {
+          data.data.map((user) => {
             return (
               <li
                 key={user.id}
