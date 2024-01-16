@@ -1,17 +1,18 @@
 import { useState } from 'react';
 
-import { UsersList } from './UsersList'
+import { UsersList1 } from './UsersList1'
+import { UsersList2 } from './UsersList2'
 
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(<UsersList1 />);
 
   return (
     <div className="App">
       <h1>TanStack Query</h1>
       <button
-        onClick={() => setCurrentPage(1)}
+        onClick={() => setCurrentPage(<UsersList1 />)}
         style={{
           height: '55px',
           width: '160px',
@@ -25,7 +26,7 @@ function App() {
         Posts List 1
       </button>
       <button
-        onClick={() => setCurrentPage(2)}
+        onClick={() => setCurrentPage(<UsersList2 />)}
         style={{
           height: '55px',
           width: '160px',
@@ -39,7 +40,7 @@ function App() {
       </button>
       <br />
       {
-        <UsersList listNumber={currentPage} />
+        currentPage
       }
     </div>
   );
